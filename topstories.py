@@ -23,5 +23,5 @@ def fetch_news():
             for probe_name, terms in search_terms.items():
                 for term in terms:
                     if post.title.find(term) > -1:
-                        news.setdefault(probe_name, []).append(post)
+                        news.setdefault(probe_name, []).append({'title':post.title, 'link':post.link})
     return news
