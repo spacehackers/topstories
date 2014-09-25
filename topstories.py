@@ -10,7 +10,7 @@ def fetch_news():
     search_terms = {}
     for line in response.content.split("\n"):
         probe_name = line.split(',')[0].replace(',',' ').strip()
-        search_terms[probe_name.lower()] = line.split(',')[1:]
+        search_terms[probe_name.lower()] = [l for l in line.split(',')[1:] if l]  # removes empty strngs
 
     # read each feed
     with open('news_feeds.txt') as f:
@@ -24,5 +24,4 @@ def fetch_news():
                 for term in terms:
                     if post.title.find(term) > -1:
                         news.setdefault(probe_name, []).append(post)
-
     return news
