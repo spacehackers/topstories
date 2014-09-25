@@ -1,0 +1,22 @@
+# this is a whitelist of news feeds to scan for news
+http://feeds.wired.com/wiredscience
+http://www.planetary.org/system/rss/channel.jsp?feedID=328434498
+http://www.popsci.com/rss.xml
+http://feeds.feedburner.com/Spacepolicyonline?format=xml
+http://boingboing.net/feed
+http://www.nasa.gov/rss/dyn/breaking_news.rss
+http://www.nasa.gov/rss/dyn/solar_system.rss
+http://global.jaxa.jp/rss/press.rdf
+http://rss.nytimes.com/services/xml/rss/nyt/InternationalHome.xml
+http://www.nytimes.com/services/xml/rss/nyt/Space.xml
+http://www.nytimes.com/services/xml/rss/nyt/Science.xml
+http://www.theverge.com/rss/group/features/index.xml
+http://feeds.gawker.com/gizmodo/full
+http://www.gizmodo.com/index.xml
+http://podcasts.engadget.com/rss.xml
+http://phenomena.nationalgeographic.com/feed/
+http://feeds.feedburner.com/AllDiscovermagazinecomContent
+http://feeds.newscientist.com/science-news
+http://feeds.newscientist.com/space
+http://feeds.gawker.com/io9/full
+http://feeds.feedburner.com/DiscoveryNews-Top-Stories
