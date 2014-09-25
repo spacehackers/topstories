@@ -14,7 +14,7 @@ app = Flask(__name__)
 @app.route('/')
 def news():
     news = fetch_news()
-    return flask.jsonify(news)  # may timeut.. todo: move to redis + scheduler
+    return flask.jsonify(**news)  # may timeut.. todo: move to redis + scheduler
 
 
 if __name__ == '__main__':
