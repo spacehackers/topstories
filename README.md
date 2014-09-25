@@ -1,4 +1,4 @@
-### this is a python rss feed scrpaer and news publisher
+### this is a python rss feed scraper and news publisher
 
 - for each news feed found in news_feeds.txt, search for each term in list of topic + search terms as found in google spreadsheet
 
