@@ -14,10 +14,10 @@ r_server = redis.StrictRedis.from_url(REDIS_URL)
 
 app = Flask(__name__)
 
-@view(app, '/', render_json)
+@app.route('/')
 def news():
     news = fetch_news()
-    return flask.jsonify(news)  # may timeut.. todo: move to redis + sheduler
+    return flask.jsonify(news)  # may timeut.. todo: move to redis + scheduler
 
 
 if __name__ == '__main__':
