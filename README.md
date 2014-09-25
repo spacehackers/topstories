@@ -11,3 +11,7 @@
 - keep track of what's already been published, only publish each link one time
 
 - send email to admins listing what has been published
+
+### here is a deployment
+
+- demo deployment http://dry-eyrie-9951.herokuapp.com/
