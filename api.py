@@ -11,6 +11,10 @@ r_server = redis.StrictRedis.from_url(REDIS_URL)
 
 app = Flask(__name__)
 
+@app.route('/hello')
+def hello():
+    return 'Hello World!'
+
 @app.route('/')
 def news():
     news = fetch_news()
