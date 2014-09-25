@@ -18,6 +18,7 @@ def hello():
 @app.route('/')
 def news():
     news = fetch_news()
+    return 'Hello World!'
     return flask.jsonify(**news)  # may timeut.. todo: move to redis + scheduler
 
 
