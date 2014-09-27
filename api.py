@@ -1,9 +1,8 @@
 import os
 import redis
 from flask import Flask, render_template, redirect, jsonify
-import feedparser
-import requests
-from topstories import fetch_news
+from json import loads
+from util import json, jsonp
 
 app = Flask(__name__)
 REDIS_URL = os.getenv('REDISTOGO_URL', 'redis://localhost:6379')
@@ -16,9 +15,11 @@ def hello():
     return 'Hello World!'
 
 @app.route('/')
-def news():
-    news = fetch_news()
-    return jsonify(**news)  # may timeut.. todo: move to redis + scheduler
+@json
+@jsonp
+def topstories():
+    topstories = loads(r_server.get('topstories'))
+    return topstories, 200
 
 if __name__ == '__main__':
     app.debug = True

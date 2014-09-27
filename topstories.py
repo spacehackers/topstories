@@ -1,9 +1,20 @@
-import feedparser
+import os
+import redis
+from json import loads, dumps
 import requests
-from datetime import datetime
-from dateutil import parser
+import feedparser
 
-def fetch_news():
+REDIS_URL = os.getenv('REDISTOGO_URL', 'redis://localhost:6379')
+r_server = redis.StrictRedis.from_url(REDIS_URL)
+
+def update_topstories():
+    """ fetches topstories from rss feeds and updates redis """
+
+    try:
+        topstories = loads(r_server.get('topstories'))
+    except TypeError:
+        topstories = {}
+
     # collect search terms from google doc
     search_terms_csv_url = 'https://docs.google.com/spreadsheet/pub?key=0AtHxCskz4p33dEs5elE0eUxfd3Z4VnlXTVliVWJxRHc&single=true&gid=4&output=csv'
     response = requests.get(search_terms_csv_url)
@@ -18,7 +29,6 @@ def fetch_news():
     with open('news_feeds.txt') as f:
         news_feeds = f.readlines()[1:]
 
-    news = {}
     for url in news_feeds:
         feed = feedparser.parse(url)
         for post in feed.entries:
@@ -29,29 +39,31 @@ def fetch_news():
 
                     if post.title.find(term) > -1:
 
-                        if probe_name in news:
+                        if probe_name in topstories:
                             # we already have post for this probe
                             # only replace it if this date is more recent
-                            if post.published_parsed != max([post.published_parsed, news[probe_name]['published_parsed']]):
+                            if post.published_parsed != max([post.published_parsed, topstories[probe_name]['published_parsed']]):
                                 continue
 
                         # add it for first time
                         try:
-                            news[probe_name] = {'title':post.title, 'link':post.link, 'published_parsed': post.published_parsed, 'published': post.published}
+                            topstories[probe_name] = {'title':post.title, 'link':post.link, 'published_parsed': post.published_parsed, 'published': post.published}
                         except AttributeError:
                             if __name__ != "__main__":
                                 print "can't find a post.title, post.link, or post.published, next is post:"
                                 print post
 
     # remove the published_parsed before returning as they are not jsonify-able
-    for probe_name, post in news.items():
-        del news[probe_name]['published_parsed']
+    for probe_name, post in topstories.items():
+        del topstories[probe_name]['published_parsed']
 
-    return news
+    r_server.set('topstories', dumps(topstories))
+
+    return topstories
 
 if __name__ == "__main__":
-    news = fetch_news()
-    for n, p in news.items():
+    topstories = update_topstories()
+    for n, p in topstories.items():
         print "%s:" % n
         print p
         print '==='
