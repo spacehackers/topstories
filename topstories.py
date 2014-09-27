@@ -43,10 +43,3 @@ def fetch_news():
 
     return news
 
-if __name__ == "__main__":
-    import json
-    news = fetch_news()
-    for n, p in news.items():
-        print "%s:" % n
-        print p
-        print '==='
