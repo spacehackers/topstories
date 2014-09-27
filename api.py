@@ -20,7 +20,6 @@ def news():
     news = fetch_news()
     return jsonify(**news)  # may timeut.. todo: move to redis + scheduler
 
-
 if __name__ == '__main__':
-    app.debug = False
+    app.debug = True
     app.run()
