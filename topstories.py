@@ -1,5 +1,7 @@
 import feedparser
 import requests
+from datetime import datetime
+from dateutil import parser
 
 def fetch_news():
     # collect search terms from google doc
@@ -20,8 +22,31 @@ def fetch_news():
     for url in news_feeds:
         feed = feedparser.parse(url)
         for post in feed.entries:
+
+            # nowsearch each term against this post.title
             for probe_name, terms in search_terms.items():
                 for term in terms:
                     if post.title.find(term) > -1:
-                        news.setdefault(probe_name, []).append({'title':post.title, 'link':post.link, 'published': post.published})
+                        if probe_name in news:
+                            # only replace it if this date is more recent
+                            if post.published_parsed == max([post.published_parsed, news[probe_name]['published_parsed']]):
+                                news[probe_name] = {'title':post.title, 'link':post.link, 'published_parsed': post.published_parsed}
+
+                        else:
+                            # add it for first time
+                            try:
+                                news[probe_name] = {'title':post.title, 'link':post.link, 'published_parsed': post.published_parsed}
+                            except AttributeError:
+                                if __name__ != "__main__":
+                                    print "can't find a post.title, post.link, or post.published, next is post:"
+                                    print post
+
     return news
+
+if __name__ == "__main__":
+    import json
+    news = fetch_news()
+    for n, p in news.items():
+        print "%s:" % n
+        print p
+        print '==='
