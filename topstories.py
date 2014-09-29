@@ -54,14 +54,14 @@ def update_topstories():
 
                             # we already have post for this probe
                             # only replace it if this date is more recent
-                            if published != max([published, dateutil.parser.parse(topstories[probe_name]['published_str'])]):
+                            if published != max([published, dateutil.parser.parse(topstories[probe_name]['published'])]):
                                 continue  # the one we already have is the latest, move along
                             else:
-                                new_top_stories.setdefault(probe_name, []).append({'title':post.title, 'link':post.link, 'published_str': published_str})
+                                new_top_stories.setdefault(probe_name, []).append({'title':post.title, 'link':post.link, 'published': published_str})
 
                         # add it for first time
                         try:
-                            topstories[probe_name] = {'title':post.title, 'link':post.link, 'published_str': published_str, }
+                            topstories[probe_name] = {'title':post.title, 'link':post.link, 'published': published_str, }
                         except AttributeError:
                             if __name__ != "__main__":
                                 print "can't find a post.title, post.link, here is post:"
