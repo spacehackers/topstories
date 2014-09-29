@@ -25,7 +25,7 @@ def update_topstories():
     search_terms = {}
     for line in response.content.split("\n"):
         probe_name = line.split(',')[0].replace(',',' ').strip()
-        search_terms[probe_name.lower()] = [l for l in line.split(',')[1:] if l]  # removes empty strngs
+        search_terms[probe_name.lower()] = [l.strip('"') for l in line.split(',')[1:] if l]  # removes empty strngs
 
     # read each feed
     with open('news_feeds.txt') as f:
@@ -35,6 +35,8 @@ def update_topstories():
     new_top_stories = {}
 
     for url in news_feeds:
+        print url
+
         feed = feedparser.parse(url)
         for post in feed.entries:
 
@@ -43,7 +45,6 @@ def update_topstories():
                 for term in terms:
 
                     if post.title.find(term) > -1:
-
                         # use feedparser's published_parsed to find the published date as time.struct_time
                         # convert it to a string and that's what gets stored in redis
                         # and convert it to a datetime.datetime object for comparing to other post dates
