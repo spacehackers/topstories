@@ -35,7 +35,6 @@ def update_topstories():
     new_top_stories = {}
 
     for url in news_feeds:
-        print url
 
         feed = feedparser.parse(url)
         for post in feed.entries:
