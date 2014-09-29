@@ -14,8 +14,10 @@ def update_topstories():
 
     try:
         topstories = loads(r_server.get('topstories'))
+        topstories_archive = loads(r_server.get('topstories_archive'))
     except TypeError:
         topstories = {}
+        topstories_archive = {}
 
     # collect search terms from google doc
     search_terms_csv_url = 'https://docs.google.com/spreadsheet/pub?key=0AtHxCskz4p33dEs5elE0eUxfd3Z4VnlXTVliVWJxRHc&single=true&gid=4&output=csv'
@@ -58,16 +60,21 @@ def update_topstories():
 
                         if probe_name in topstories:
 
-                            # we already have post for this probe
-                            # only replace it if this date is more recent
-                            if published != max([published, dateutil.parser.parse(topstories[probe_name]['published'])]):
-                                continue  # the one we already have is the latest, move along
-                            else:
-                                new_top_stories.setdefault(probe_name, []).append({'title':post.title, 'link':post.link, 'published': published_str})
+                            if post.link.strip() == topstories[probe_name]['link'].strip():
+                                continue  # we are already serving this link
 
-                        # add it for first time
+                            if published != max([published, dateutil.parser.parse(topstories[probe_name]['published'])]):
+                                continue  # the link we already have is the latest, move along
+
+                            else:
+                                # this is a new story, archive the old story
+                                topstories_archive[probe_name] = topstories[probe_name]
+
+                        # add this story to topstories
                         try:
-                            topstories[probe_name] = {'title':post.title, 'link':post.link, 'published': published_str, }
+                            topstories[probe_name] = {'title':post.title, 'link':post.link, 'published': published_str }
+                            new_top_stories[probe_name] = topstories[probe_name]
+
                         except AttributeError:
                             if __name__ != "__main__":
                                 print "can't find a post.title, post.link, here is post:"
@@ -75,16 +82,17 @@ def update_topstories():
                                 continue
 
     r_server.set('topstories', dumps(topstories))
+    r_server.set('topstories_archive', dumps(topstories))
 
     if new_top_stories:
         # send an email digest!
-        pass
+        print "new news added"
+        print new_top_stories
+    else:
+        print "no new stories"
 
     return topstories
 
 if __name__ == "__main__":
     topstories = update_topstories()
-    for n, p in topstories.items():
-        print "%s:" % n
-        print p
-        print '==='
+    print 'ok'
