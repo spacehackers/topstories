@@ -47,8 +47,14 @@ def update_topstories():
                         # use feedparser's published_parsed to find the published date as time.struct_time
                         # convert it to a string and that's what gets stored in redis
                         # and convert it to a datetime.datetime object for comparing to other post dates
-                        published_str = datetime.datetime(*post.published_parsed[:6]).isoformat()
-                        published = dateutil.parser.parse(published_str)
+                        try:
+                            published_str = datetime.datetime(*post.published_parsed[:6]).isoformat()
+                            published = dateutil.parser.parse(published_str)
+                        except AttributeError, e:
+                            print e
+                            print url
+                            print post
+                            continue
 
                         if probe_name in topstories:
 
@@ -66,6 +72,7 @@ def update_topstories():
                             if __name__ != "__main__":
                                 print "can't find a post.title, post.link, here is post:"
                                 print post
+                                continue
 
     r_server.set('topstories', dumps(topstories))
 

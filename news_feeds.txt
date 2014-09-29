@@ -20,3 +20,6 @@ http://feeds.newscientist.com/science-news
 http://feeds.newscientist.com/space
 http://feeds.gawker.com/io9/full
 http://feeds.feedburner.com/DiscoveryNews-Top-Stories
+http://www.space.com/home/feed/site.xml
+http://blogs.jpl.nasa.gov/?feed=rss2
+http://www.jpl.nasa.gov/multimedia/rss/news.xml
