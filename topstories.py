@@ -27,7 +27,7 @@ def update_topstories():
     search_terms = {}
     for line in response.content.split("\n"):
         probe_name = line.split(',')[0].replace(',',' ').strip()
-        search_terms[probe_name.lower()] = [l.strip('"') for l in line.split(',')[1:] if l]  # removes empty strngs
+        search_terms[probe_name.lower()] = [l.strip('"').strip() for l in line.split(',')[1:] if l]  # removes empty strngs
 
     # read each feed
     with open('news_feeds.txt') as f:
