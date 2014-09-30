@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<ul>
+    {% for probe_name, search_terms in spaceprobes.items() %}
+    <div style = "border-top:1px solid gray; padding:20px">
+        <h2>
+            <a name = "{{ probe_name }}">
+                <a href = "/admin/{{ '_'.join(probe_name.split(' ')) }}">{{ probe_name }}</a>
+            </a>
+        </h2>
+
+        <div>{{ ','.join(search_terms) }}</div>
+
+            <ul>
+                {% for story_probe_name, post in topstories.items() %}
+                    {% if story_probe_name == probe_name %}
+                        <li><h3 style = "color:gray">{{ post.title|safe}}</h3></li>
+                        <li>{{ post.published}}</li>
+                        <li><a href = "{{ post.link}}" target = "_blank">{{ post.link}}</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+    </div>
+
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -5,9 +5,28 @@ import feedparser
 import datetime
 import dateutil.parser
 from json import loads, dumps
+from collections import OrderedDict
 
 REDIS_URL = os.getenv('REDISTOGO_URL', 'redis://localhost:6379')
 r_server = redis.StrictRedis.from_url(REDIS_URL)
+
+def get_search_terms_by_probe():
+    # collect search terms from google doc
+    search_terms_csv_url = 'https://docs.google.com/spreadsheet/pub?key=0AtHxCskz4p33dEs5elE0eUxfd3Z4VnlXTVliVWJxRHc&single=true&gid=4&output=csv'
+    response = requests.get(search_terms_csv_url)
+    assert response.status_code == 200, 'Wrong status code'
+
+    search_terms = {}
+    for line in response.content.split("\n")[1:]:
+        probe_name = line.split(',')[0].replace(',',' ').strip()
+        search_terms[probe_name.lower()] = [l.strip('"').strip() for l in line.split(',')[1:] if l]  # removes empty strngs
+
+    # sort it alphabetically by probe name
+    search_terms_sorted = OrderedDict()
+    for probe_name in sorted(search_terms, key=lambda key: search_terms[key]):
+        search_terms_sorted[probe_name] = search_terms[probe_name]
+
+    return search_terms_sorted
 
 def update_topstories():
     """ fetches topstories from rss feeds and updates redis """
@@ -19,15 +38,7 @@ def update_topstories():
         topstories = {}
         topstories_archive = {}
 
-    # collect search terms from google doc
-    search_terms_csv_url = 'https://docs.google.com/spreadsheet/pub?key=0AtHxCskz4p33dEs5elE0eUxfd3Z4VnlXTVliVWJxRHc&single=true&gid=4&output=csv'
-    response = requests.get(search_terms_csv_url)
-    assert response.status_code == 200, 'Wrong status code'
-
-    search_terms = {}
-    for line in response.content.split("\n"):
-        probe_name = line.split(',')[0].replace(',',' ').strip()
-        search_terms[probe_name.lower()] = [l.strip('"').strip() for l in line.split(',')[1:] if l]  # removes empty strngs
+    search_terms = get_search_terms_by_probe()
 
     # read each feed
     with open('news_feeds.txt') as f:

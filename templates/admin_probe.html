@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<div class = "containter" style = "border-top:1px solid gray; padding:20px">
+    <h2>
+        {{ probe_name }}
+    </h2>
+
+    <div>{{ post.search_terms }}</div>
+
+    <form action = "/admin/{{ probe_name }}/update.html" role = "form" method = "POST">
+
+        <input type = "hidden" name = "probe_name" value = "{{ probe_name }}">
+
+        <div class="row">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Title</label>
+                <input name = "title" type = "text" value = "{{ post.title|safe}}" class="form-control">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group">
+                <label for="exampleInputEmail1">ISO date</label>
+                <input name = "date" type = "text" value = "{{ post.published}}" class="form-control">
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="form-group">
+                <label for="exampleInputEmail1">URL</label>
+                <input name = "url" type = "text" value = "{{ post.link}}" class="form-control">
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-info">Submit</button>
+    </form>
+
+<div style = "margin-top:100px"><a href = "/admin">back</a></div>
+</div>
+
+
+{% endblock %}
