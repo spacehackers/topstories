@@ -24,3 +24,7 @@ http://www.space.com/home/feed/site.xml
 http://blogs.jpl.nasa.gov/?feed=rss2
 http://www.jpl.nasa.gov/multimedia/rss/news.xml
 http://www.universetoday.com/universetoday.xml
+http://www.skyandtelescope.com/feed/
+http://news.yahoo.com/rss/science
+http://phys.org/rss-feed/breaking/space-news/space-exploration/
+
