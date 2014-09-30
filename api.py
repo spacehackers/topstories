@@ -1,6 +1,6 @@
 import os
 import redis
-from flask import Flask, render_template, redirect, jsonify, url_for
+from flask import Flask, render_template, redirect, jsonify, url_for, abort
 from json import loads, dumps
 from util import json, jsonp, requires_auth
 from topstories import get_search_terms_by_probe
@@ -11,6 +11,26 @@ REDIS_URL = os.getenv('REDISTOGO_URL', 'redis://localhost:6379')
 r_server = redis.StrictRedis.from_url(REDIS_URL)
 
 app = Flask(__name__)
+
+
+@app.route('/')
+@json
+@jsonp
+def topstories():
+    topstories = loads(r_server.get('topstories'))
+    return topstories, 200
+
+
+@app.route('/<probe_name>')
+@json
+@jsonp
+def topstories_single(probe_name):
+    topstories = loads(r_server.get('topstories'))
+    try:
+        return topstories[probe_name], 200
+    except KeyError:
+        abort(404)
+
 
 @app.route('/admin/<probe_name>/update.html', methods = ['POST'])
 @requires_auth
@@ -54,13 +74,6 @@ def admin_main():
     kwargs = {'topstories':topstories, 'spaceprobes': spaceprobes}
     return render_template('admin.html', **kwargs)
 
-
-@app.route('/')
-@json
-@jsonp
-def topstories():
-    topstories = loads(r_server.get('topstories'))
-    return topstories, 200
 
 if __name__ == '__main__':
     app.debug = True
