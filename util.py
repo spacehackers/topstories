@@ -14,7 +14,7 @@ MAILGUN_SMTP_PASSWORD = os.getenv('MAILGUN_SMTP_PASSWORD')
 def send_email(subject, body, to):
     msg = MIMEText(body)
     msg['Subject'] = subject
-    msg['From'] = "foo@samples.mailgun.org"
+    msg['From'] = "spaceprobes@samples.mailgun.org"
     msg['To'] = to
     s = smtplib.SMTP('smtp.mailgun.org', 587)
     s.login(MAILGUN_SMTP_LOGIN, MAILGUN_SMTP_PASSWORD)
