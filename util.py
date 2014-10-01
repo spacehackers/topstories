@@ -10,6 +10,7 @@ from email.mime.text import MIMEText
 MAILGUN_SMTP_LOGIN = os.getenv('MAILGUN_SMTP_LOGIN')
 MAILGUN_SMTP_PASSWORD = os.getenv('MAILGUN_SMTP_PASSWORD')
 
+
 def send_email(subject, body, to):
     msg = MIMEText(body)
     msg['Subject'] = subject
@@ -19,7 +20,6 @@ def send_email(subject, body, to):
     s.login(MAILGUN_SMTP_LOGIN, MAILGUN_SMTP_PASSWORD)
     s.sendmail(msg['From'], msg['To'], msg.as_string())
     s.quit()
-
 
 
 def check_auth(username, password):
