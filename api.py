@@ -5,6 +5,7 @@ from json import loads, dumps
 from util import json, jsonp, requires_auth, support_jsonp
 from topstories import get_search_terms_by_probe
 from forms import SpaceProbeForm
+from dateutil import parser
 
 app = Flask(__name__)
 REDIS_URL = os.getenv('REDISTOGO_URL', 'redis://localhost:6379')
@@ -26,7 +27,10 @@ def topstories():
 def topstories_single(probe_name):
     topstories = loads(r_server.get('topstories'))
     try:
-        return jsonify({"post":topstories[probe_name.lower()]})
+        # pass along a human readable version of published as well
+        post = topstories[probe_name.lower()]
+        post['published_readable'] = parser.parse(post['published']).strftime('%B %e, %Y')
+        return jsonify({"post":post})
     except KeyError:
         abort(404)
 
