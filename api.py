@@ -2,7 +2,7 @@ import os
 import redis
 from flask import Flask, render_template, redirect, jsonify, url_for, abort
 from json import loads, dumps
-from util import json, jsonp, requires_auth
+from util import json, jsonp, requires_auth, support_jsonp
 from topstories import get_search_terms_by_probe
 from forms import SpaceProbeForm
 
@@ -22,12 +22,11 @@ def topstories():
 
 
 @app.route('/<probe_name>')
-@json
-@jsonp
+@support_jsonp
 def topstories_single(probe_name):
     topstories = loads(r_server.get('topstories'))
     try:
-        return topstories[probe_name], 200
+        return jsonify({"post":topstories[probe_name.lower()]})
     except KeyError:
         abort(404)
 
