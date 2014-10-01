@@ -10,7 +10,7 @@
             </a>
         </h2>
 
-        <div>{{ ','.join(search_terms) }}</div>
+        <div><span style = "color:gray">Search Terms:</span> {{ ', '.join(search_terms) }}</div>
 
             <ul>
                 {% for story_probe_name, post in topstories.items() %}
