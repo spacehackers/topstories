@@ -23,7 +23,7 @@ def send_email_update(new_top_stories):
         link = new_top_stories[probe_name]['link']
         msg += '%s: %s <a href = "%s">%s</a>' % (probe_name, title, link, link)
         subject = "spaceprobes update for %s" % probe_name
-        body = subject + "<br><br>" + msg
+        body = subject + " \n " + msg
         send_email(subject, body, ADMIN_EMAIL)
 
 def get_search_terms_by_probe():
@@ -113,9 +113,9 @@ def update_topstories():
 
     if new_top_stories:
         # send an email digest!
-        send_email_update(new_top_stories)
         print "New Stories Added!"
         print new_top_stories
+        send_email_update(new_top_stories)
     else:
         print "no new stories added"
 
