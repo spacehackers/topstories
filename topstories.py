@@ -34,7 +34,7 @@ def get_search_terms_by_probe():
 
     search_terms = {}
     for line in response.content.split("\n")[1:]:
-        probe_name = line.split(',')[0].replace(',',' ').strip()
+        probe_name = line.strip(',').split(',')[0].replace(',',' ').strip()
         search_terms[probe_name.lower()] = [l.strip('"').strip() for l in line.split(',')[1:] if l]  # removes empty strngs
 
     # sort it alphabetically by probe name
