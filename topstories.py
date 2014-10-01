@@ -49,9 +49,12 @@ def update_topstories():
 
     try:
         topstories = loads(r_server.get('topstories'))
-        topstories_archive = loads(r_server.get('topstories_archive'))
     except TypeError:
         topstories = {}
+
+    try:
+        topstories_archive = loads(r_server.get('topstories_archive'))
+    except TypeError:
         topstories_archive = {}
 
     search_terms = get_search_terms_by_probe()
