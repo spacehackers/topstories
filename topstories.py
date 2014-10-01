@@ -93,12 +93,9 @@ def update_topstories():
                             if published != max([published, dateutil.parser.parse(topstories[probe_name]['published'])]):
                                 continue  # the link we already have is the latest, move along
 
-                            else:
-                                # this is a new story, archive the old story
-                                topstories_archive[probe_name] = topstories[probe_name]
-
                         # add this story to topstories
                         try:
+                            topstories_archive[probe_name] = topstories[probe_name]  # first arvhive the old
                             topstories[probe_name] = {'title':post.title, 'link':post.link, 'published': published_str }
                             new_top_stories[probe_name] = topstories[probe_name]
 
