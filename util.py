@@ -1,10 +1,26 @@
 # safe_float, json, jsonp copied from @natronics: https://github.com/open-notify/Open-Notify-API/blob/master/util.py
-from functools import wraps
-from flask import jsonify, request, current_app
+import os
 import smtplib
 from functools import wraps
+from flask import jsonify, request, current_app
+from functools import wraps
 from flask import request, Response
-import os
+
+from email.mime.text import MIMEText
+MAILGUN_SMTP_LOGIN = os.getenv('MAILGUN_SMTP_LOGIN')
+MAILGUN_SMTP_PASSWORD = os.getenv('MAILGUN_SMTP_PASSWORD')
+
+def send_email(subject, body, to):
+    msg = MIMEText(body)
+    msg['Subject'] = subject
+    msg['From'] = "foo@samples.mailgun.org"
+    msg['To'] = to
+    s = smtplib.SMTP('smtp.mailgun.org', 587)
+    s.login(MAILGUN_SMTP_LOGIN, MAILGUN_SMTP_PASSWORD)
+    s.sendmail(msg['From'], msg['To'], msg.as_string())
+    s.quit()
+
+
 
 def check_auth(username, password):
     """This function is called to check if a username /
@@ -27,16 +43,6 @@ def requires_auth(f):
             return authenticate()
         return f(*args, **kwargs)
     return decorated
-
-def send_email(msg, gmail_addy, gmail_pw, to_address):
-    """ send an email, mostly for triggering the wemo """
-    server = smtplib.SMTP( "smtp.gmail.com", 587)
-    server.starttls()
-    server.login( gmail_addy, gmail_pw)
-    email_body = "Subject: %s\nTo:trigger@ifttt.com\n\n%s" % (msg, 'test')  # same subject as body
-    server.sendmail(gmail_addy, to_address, email_body)
-    server.quit()
-
 
 def safe_float(s, range, default=False):
     try:

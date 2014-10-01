@@ -6,9 +6,25 @@ import datetime
 import dateutil.parser
 from json import loads, dumps
 from collections import OrderedDict
+from util import send_email
 
 REDIS_URL = os.getenv('REDISTOGO_URL', 'redis://localhost:6379')
 r_server = redis.StrictRedis.from_url(REDIS_URL)
+
+ADMIN_EMAIL = os.getenv('ADMIN_EMAIL', None)
+
+
+def send_email_update(new_top_stories):
+    if not ADMIN_EMAIL:
+        return
+    msg = "New Spaceprobes: "
+    for probe_name in new_top_stories:
+        title = new_top_stories[probe_name]['title']
+        link = new_top_stories[probe_name]['link']
+        msg += '%s: %s <a href = "%s">%s</a>' % (probe_name, title, link, link)
+        subject = "spaceprobes update for %s" % probe_name
+        body = subject + "<br><br>" + msg
+        send_email(subject, body, ADMIN_EMAIL)
 
 def get_search_terms_by_probe():
     # collect search terms from google doc
@@ -97,10 +113,11 @@ def update_topstories():
 
     if new_top_stories:
         # send an email digest!
-        print "new news added"
+        send_email_update(new_top_stories)
+        print "New Stories Added!"
         print new_top_stories
     else:
-        print "no new stories"
+        print "no new stories added"
 
     return topstories
 
