@@ -106,7 +106,7 @@ def update_topstories():
                                 continue
 
     r_server.set('topstories', dumps(topstories))
-    r_server.set('topstories_archive', dumps(topstories))
+    r_server.set('topstories_archive', dumps(topstories_archive))
 
     if new_top_stories:
         # send an email digest!
