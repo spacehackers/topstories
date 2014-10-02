@@ -13,6 +13,10 @@ r_server = redis.StrictRedis.from_url(REDIS_URL)
 
 ADMIN_EMAIL = os.getenv('ADMIN_EMAIL', None)
 
+# if a headline includes these terms, skip it
+exclude_terms = [l.lower() for l in [
+    'Wallpaper',
+]]
 
 def send_email_update(new_top_stories):
     if not ADMIN_EMAIL:
@@ -75,7 +79,9 @@ def update_topstories():
             for probe_name, terms in search_terms.items():
                 for term in terms:
 
-                    if post.title.find(term) > -1:
+                    if post.title.find(term) > -1 and max([post.title.lower().find(t) for t in exclude_terms]) < 0:
+                        # term is found in post title and title contains no exclude_terms
+
                         # use feedparser's published_parsed to find the published date as time.struct_time
                         # convert it to a string and that's what gets stored in redis
                         # and convert it to a datetime.datetime object for comparing to other post dates
