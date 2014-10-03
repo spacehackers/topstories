@@ -21,7 +21,7 @@ exclude_terms = [l.lower() for l in [
 def send_email_update(new_top_stories):
     if not ADMIN_EMAIL:
         return
-    for probe_name in new_top_stories[:10]:
+    for probe_name in [p for p in new_top_stories][:10]:
         title = new_top_stories[probe_name]['title']
         link = new_top_stories[probe_name]['link']
         # msg = '%s: %s <a href = "%s">%s</a>' % (probe_name, title, link, link)
