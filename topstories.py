@@ -21,11 +21,13 @@ exclude_terms = [l.lower() for l in [
 def send_email_update(new_top_stories):
     if not ADMIN_EMAIL:
         return
-    for probe_name in new_top_stories:
+    for probe_name in new_top_stories[:10]:
         title = new_top_stories[probe_name]['title']
         link = new_top_stories[probe_name]['link']
         # msg = '%s: %s <a href = "%s">%s</a>' % (probe_name, title, link, link)
         msg = '%s: %s' % (title, link)
+        if len(new_top_stories) > 10:
+            msg += "\n Alert! There are more than 10 top stories in this update"
         subject = "spaceprobes update for %s" % probe_name
         send_email(subject, msg, ADMIN_EMAIL)
 

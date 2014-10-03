@@ -20,6 +20,7 @@ def send_email(subject, body, to):
     s.login(MAILGUN_SMTP_LOGIN, MAILGUN_SMTP_PASSWORD)
     s.sendmail(msg['From'], msg['To'], msg.as_string())
     s.quit()
+    print "email sent"
 
 
 def check_auth(username, password):
