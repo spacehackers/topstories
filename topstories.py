@@ -107,6 +107,10 @@ def update_topstories():
                         # add this story to topstories
                         try:
                             topstories_archive[probe_name] = topstories[probe_name]  # first arvhive the old
+                        except KeyError:
+                            pass  # there was no archive, nbd this is a newly added probe
+
+                        try:
                             topstories[probe_name] = {'title':post.title, 'link':post.link, 'published': published_str }
                             new_top_stories[probe_name] = topstories[probe_name]
 
