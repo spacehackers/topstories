@@ -16,6 +16,7 @@ ADMIN_EMAIL = os.getenv('ADMIN_EMAIL', None)
 # if a headline includes these terms, skip it
 exclude_terms = [l.lower() for l in [
     'Wallpaper',
+    'Rosetta Stone'
 ]]
 
 def send_email_update(new_top_stories):
