@@ -1,4 +1,5 @@
 # this is a whitelist of news feeds to scan for news
+http://sen.com/newsfeed/
 http://feeds.wired.com/wiredscience
 http://www.planetary.org/system/rss/channel.jsp?feedID=328434498
 http://www.popsci.com/rss.xml
