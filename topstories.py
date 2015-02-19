@@ -4,12 +4,15 @@ import requests
 import feedparser
 import datetime
 import dateutil.parser
+import urllib2
 from json import loads, dumps
 from collections import OrderedDict
 from util import send_email
 
 REDIS_URL = os.getenv('REDISTOGO_URL', 'redis://localhost:6379')
 r_server = redis.StrictRedis.from_url(REDIS_URL)
+
+news_feed_list_url = 'https://raw.githubusercontent.com/spacehackers/topstories/master/news_feeds.txt'
 
 ADMIN_EMAIL = os.getenv('ADMIN_EMAIL', None)
 
@@ -66,9 +69,10 @@ def update_topstories():
 
     search_terms = get_search_terms_by_probe()
 
-    # read each feed
-    with open('news_feeds.txt') as f:
-        news_feeds = f.readlines()[1:]
+    # read each feed # wait how can this work on Heroku?
+    # move to read remote github..
+    response = urllib2.urlopen(news_feed_list_url)
+    news_feeds = response.readlines()[1:]
 
     # keep track of when we add a new top story
     new_top_stories = {}
