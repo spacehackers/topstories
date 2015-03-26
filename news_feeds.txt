@@ -28,4 +28,9 @@ http://www.universetoday.com/universetoday.xml
 http://www.skyandtelescope.com/feed/
 http://news.yahoo.com/rss/science
 http://phys.org/rss-feed/breaking/space-news/space-exploration/
-
+http://www.engadget.com/rss.xml
+http://www.jhuapl.edu/newscenter/feed/APLNews.xml
+http://nautil.us/rss/all
+http://www.sciencedaily.com/newsfeed.xml
+http://feeds.nbcnews.com/feeds/topstories
+http://feeds.washingtonpost.com/rss/rss_speaking-of-science
