@@ -34,3 +34,4 @@ http://nautil.us/rss/all
 http://www.sciencedaily.com/newsfeed.xml
 http://feeds.nbcnews.com/feeds/topstories
 http://feeds.washingtonpost.com/rss/rss_speaking-of-science
+http://astronomynow.com/feed/
