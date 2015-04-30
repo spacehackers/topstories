@@ -86,7 +86,7 @@ def update_topstories():
             for probe_name, terms in search_terms.items():
                 for term in terms:
 
-                    if len(term) < 3:
+                    if len(term.strip()) < 3:
                         continue  # there are no 2 letter search terms there just aren't
 
                     if post.title.find(term) > -1 and max([post.title.lower().find(t) for t in exclude_terms]) < 0:
@@ -105,6 +105,9 @@ def update_topstories():
                             continue
 
                         if probe_name in topstories:
+
+                            if probe_name.strip() == '--':
+                                continue  # this is BS not sure how it gets there
 
                             if post.link.strip() == topstories[probe_name]['link'].strip():
                                 continue  # we are already serving this link
