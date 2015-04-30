@@ -15,7 +15,6 @@ app = Flask(__name__)
 
 
 @app.route('/')
-@json
 @support_jsonp
 def topstories():
     topstories = loads(r_server.get('topstories'))
