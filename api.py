@@ -18,7 +18,7 @@ app = Flask(__name__)
 @support_jsonp
 def topstories():
     topstories = loads(r_server.get('topstories'))
-    return topstories, 200
+    return jsonify(topstories)
 
 
 @app.route('/<probe_name>')
