@@ -1,38 +1,36 @@
 # this is a whitelist of news feeds to scan for news
-http://sen.com/newsfeed/
-http://feeds.wired.com/wiredscience
-http://www.planetary.org/system/rss/channel.jsp?feedID=328434498
-http://www.popsci.com/rss.xml
-http://feeds.feedburner.com/Spacepolicyonline?format=xml
-http://boingboing.net/feed
-http://www.nasa.gov/rss/dyn/breaking_news.rss
-http://www.nasa.gov/rss/dyn/solar_system.rss
-http://global.jaxa.jp/rss/press.rdf
-http://rss.nytimes.com/services/xml/rss/nyt/InternationalHome.xml
-http://www.nytimes.com/services/xml/rss/nyt/Space.xml
-http://www.nytimes.com/services/xml/rss/nyt/Science.xml
-http://www.theverge.com/rss/group/features/index.xml
-http://feeds.gawker.com/gizmodo/full
-http://www.gizmodo.com/index.xml
-http://podcasts.engadget.com/rss.xml
-http://phenomena.nationalgeographic.com/feed/
-http://feeds.feedburner.com/AllDiscovermagazinecomContent
-http://feeds.newscientist.com/science-news
-http://feeds.newscientist.com/space
-http://feeds.gawker.com/io9/full
-http://feeds.feedburner.com/DiscoveryNews-Top-Stories
-http://www.space.com/home/feed/site.xml
-http://blogs.jpl.nasa.gov/?feed=rss2
-http://www.jpl.nasa.gov/multimedia/rss/news.xml
-http://www.universetoday.com/universetoday.xml
-http://www.skyandtelescope.com/feed/
-http://news.yahoo.com/rss/science
-http://phys.org/rss-feed/breaking/space-news/space-exploration/
-http://www.engadget.com/rss.xml
-http://www.jhuapl.edu/newscenter/feed/APLNews.xml
-http://nautil.us/rss/all
-http://www.sciencedaily.com/newsfeed.xml
-http://feeds.nbcnews.com/feeds/topstories
-http://feeds.washingtonpost.com/rss/rss_speaking-of-science
-http://astronomynow.com/feed/
-http://global.jaxa.jp/rss/new.rdf
+http://astronomynow.com/feed/	#Astronomy Now
+http://boingboing.net/tag/science/feed	#Boing Boing Science
+http://boingboing.net/tag/space/feed	#Boing Boing Space
+http://feeds.feedburner.com/AllDiscovermagazinecomContent	#Discover Magazine
+http://feeds.feedburner.com/DiscoveryNews-Top-Stories	#Discovery News
+http://www.engadget.com/rss.xml	#Engadget
+http://gizmodo.com/rss	#Gizmodo
+http://feeds.gawker.com/io9/full	#io9
+http://global.jaxa.jp/rss/new.rdf	#JAXA New
+http://global.jaxa.jp/rss/press.rdf	#JAXA Press
+http://www.jhuapl.edu/newscenter/feed/APLNews.xml	#JHUAPL News
+http://www.nasa.gov/rss/dyn/breaking_news.rss	#NASA Breaking News
+http://blogs.jpl.nasa.gov/?feed=rss2	#NASA JPL Blogs
+http://www.jpl.nasa.gov/multimedia/rss/news.xml	#NASA JPL News
+http://www.nasa.gov/rss/dyn/solar_system.rss	#NASA Solar System
+http://phenomena.nationalgeographic.com/feed/	#National Georaphic Phenomena
+http://nautil.us/rss/all	#Nautilus
+http://feeds.nbcnews.com/feeds/science	#NBC News Science
+http://feeds.newscientist.com/science-news	#New Scientist Science
+http://feeds.newscientist.com/space	#New Scientist Space
+http://www.nytimes.com/services/xml/rss/nyt/Science.xml	#New York Times Science
+http://www.nytimes.com/services/xml/rss/nyt/Space.xml	#New York Times Space
+http://phys.org/rss-feed/breaking/space-news/space-exploration/	#Phys.org Space
+http://www.planetary.org/system/rss/channel.jsp?feedID=328434498	#Planetary Society
+http://www.popsci.com/rss.xml	#Popular Science
+http://www.sciencedaily.com/newsfeed.xml	#Science Daily
+http://sen.com/newsfeed/	#Sen
+http://www.skyandtelescope.com/feed/	#Sky and Telescope
+http://www.space.com/home/feed/site.xml	#Space .com
+http://feeds.feedburner.com/Spacepolicyonline?format=xml	#Space Policy Online
+http://www.theverge.com/science/rss/index.xml	#The Verge Science
+http://www.universetoday.com/universetoday.xml	#Universe Today
+http://feeds.washingtonpost.com/rss/rss_speaking-of-science	#Washington Post Speaking of Science
+http://feeds.wired.com/wiredscience	#Wired Science
+http://news.yahoo.com/rss/science	#Yahoo Science
