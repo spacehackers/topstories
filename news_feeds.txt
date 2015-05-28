@@ -27,7 +27,8 @@ http://www.popsci.com/rss.xml	#Popular Science
 http://www.sciencedaily.com/newsfeed.xml	#Science Daily
 http://sen.com/newsfeed/	#Sen
 http://www.skyandtelescope.com/feed/	#Sky and Telescope
-http://www.space.com/home/feed/site.xml	#Space .com
+http://www.space.com/home/feed/site.xml	#Space.com
+http://spacenews.com/feed/ #SpaceNews
 http://feeds.feedburner.com/Spacepolicyonline?format=xml	#Space Policy Online
 http://www.theverge.com/science/rss/index.xml	#The Verge Science
 http://www.universetoday.com/universetoday.xml	#Universe Today
