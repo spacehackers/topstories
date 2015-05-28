@@ -77,7 +77,9 @@ def update_topstories():
     # keep track of when we add a new top story
     new_top_stories = {}
 
-    for url in news_feeds:
+    for line in news_feeds:
+
+        url = line.split('#')[0].strip()
 
         feed = feedparser.parse(url)
         for post in feed.entries:
