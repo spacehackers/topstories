@@ -19,6 +19,13 @@ app = Flask(__name__)
 @support_jsonp
 def topstories():
     topstories = loads(r_server.get('topstories'))
+
+    # add the published_readable field to the bulk json feed
+    for t in topstories:
+        published = topstories[t]['published']
+        published_readable = parser.parse(published).strftime('%B %e, %Y')
+        topstories[t]['published_readable'] = published_readable
+        
     return jsonify(topstories)
 
 
