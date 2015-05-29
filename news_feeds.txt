@@ -34,6 +34,8 @@ http://www.sciencedaily.com/newsfeed.xml	#Science Daily
 http://sen.com/newsfeed/	#Sen
 http://www.skyandtelescope.com/feed/	#Sky and Telescope
 http://www.slate.com/articles/health_and_science.fulltext.all.rss #Slate Health & Science
+http://www.smithsonianmag.com/rss/science-nature/ #Smithsonian Science
+http://www.smithsonianmag.com/rss/smartnews-science/ #Smithsonian SmartNews Science
 http://www.space.com/home/feed/site.xml	#Space.com
 http://spacenews.com/feed/ #SpaceNews
 http://feeds.feedburner.com/Spacepolicyonline?format=xml	#Space Policy Online
