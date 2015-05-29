@@ -3,6 +3,7 @@ http://astronomynow.com/feed/	#Astronomy Now
 http://feeds.bbci.co.uk/news/science_and_environment/rss.xml #BBC Science and Environment
 http://boingboing.net/tag/science/feed	#Boing Boing Science
 http://boingboing.net/tag/space/feed	#Boing Boing Space
+http://rss.cnn.com/rss/edition_space.rss #CNN Science and Space
 http://feeds.feedburner.com/AllDiscovermagazinecomContent	#Discover Magazine
 http://feeds.feedburner.com/DiscoveryNews-Top-Stories	#Discovery News
 http://www.engadget.com/rss.xml	#Engadget
