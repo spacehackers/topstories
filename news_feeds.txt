@@ -18,6 +18,7 @@ http://www.jhuapl.edu/newscenter/feed/APLNews.xml	#JHUAPL News
 http://www.nasa.gov/rss/dyn/breaking_news.rss	#NASA Breaking News
 http://blogs.jpl.nasa.gov/?feed=rss2	#NASA JPL Blogs
 http://www.jpl.nasa.gov/multimedia/rss/news.xml	#NASA JPL News
+http://www.nasaspaceflight.com/feed/ #NASA Spaceflight
 http://www.nasa.gov/rss/dyn/solar_system.rss	#NASA Solar System
 http://phenomena.nationalgeographic.com/feed/	#National Georaphic Phenomena
 http://www.nature.com/nature/newsfeeds.html #Nature News
