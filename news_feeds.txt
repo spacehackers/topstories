@@ -1,5 +1,6 @@
 # this is a whitelist of news feeds to scan for news
 http://astronomynow.com/feed/	#Astronomy Now
+http://feeds.bbci.co.uk/news/science_and_environment/rss.xml #BBC Science and Environment
 http://boingboing.net/tag/science/feed	#Boing Boing Science
 http://boingboing.net/tag/space/feed	#Boing Boing Space
 http://feeds.feedburner.com/AllDiscovermagazinecomContent	#Discover Magazine
