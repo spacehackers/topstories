@@ -16,6 +16,7 @@ http://blogs.jpl.nasa.gov/?feed=rss2	#NASA JPL Blogs
 http://www.jpl.nasa.gov/multimedia/rss/news.xml	#NASA JPL News
 http://www.nasa.gov/rss/dyn/solar_system.rss	#NASA Solar System
 http://phenomena.nationalgeographic.com/feed/	#National Georaphic Phenomena
+http://www.nature.com/nature/newsfeeds.html #Nature News
 http://nautil.us/rss/all	#Nautilus
 http://feeds.nbcnews.com/feeds/science	#NBC News Science
 http://feeds.newscientist.com/science-news	#New Scientist Science
