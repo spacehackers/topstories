@@ -7,6 +7,8 @@ http://rss.cnn.com/rss/edition_space.rss #CNN Science and Space
 http://feeds.feedburner.com/AllDiscovermagazinecomContent	#Discover Magazine
 http://feeds.feedburner.com/DiscoveryNews-Top-Stories	#Discovery News
 http://www.engadget.com/rss.xml	#Engadget
+http://sci.esa.int/newssyndication/rss/cosmicvisionweb.xml #ESA Cosmic Vision Blog
+http://sci.esa.int/newssyndication/rss/sciweb.xml #ESA News
 http://gizmodo.com/rss	#Gizmodo
 http://www.huffingtonpost.com/feeds/verticals/science/index.xml #Huffington Post Science
 http://feeds.gawker.com/io9/full	#io9
