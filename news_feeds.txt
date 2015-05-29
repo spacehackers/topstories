@@ -6,6 +6,7 @@ http://feeds.feedburner.com/AllDiscovermagazinecomContent	#Discover Magazine
 http://feeds.feedburner.com/DiscoveryNews-Top-Stories	#Discovery News
 http://www.engadget.com/rss.xml	#Engadget
 http://gizmodo.com/rss	#Gizmodo
+http://www.huffingtonpost.com/feeds/verticals/science/index.xml #Huffington Post Science
 http://feeds.gawker.com/io9/full	#io9
 http://global.jaxa.jp/rss/new.rdf	#JAXA New
 http://global.jaxa.jp/rss/press.rdf	#JAXA Press
