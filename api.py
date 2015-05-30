@@ -13,6 +13,7 @@ r_server = redis.StrictRedis.from_url(REDIS_URL)
 
 app = Flask(__name__)
 
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 
 @app.route('/')
 @app.route('/news.json')
@@ -47,7 +48,7 @@ def topstories_single(probe_name):
 def admin(probe_name):
     topstories = loads(r_server.get('topstories'))
     topstories_archive = loads(r_server.get('topstories_archive'))
-    form = SpaceProbeForm(csrf_enabled=False)
+    form = SpaceProbeForm()
 
     if form.validate():
         # archive the old
@@ -75,7 +76,7 @@ def admin_probe(probe_name):
     except KeyError:
         post = {}
 
-    kwargs = {'probe_name': probe_name, 'post':post, 'form':SpaceProbeForm(csrf_enabled=False)}
+    kwargs = {'probe_name': probe_name, 'post':post, 'form':SpaceProbeForm()}
     return render_template('admin_probe.html', **kwargs)
 
 

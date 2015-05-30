@@ -17,7 +17,8 @@
     <div>{{ post.search_terms }}</div>
 
     <form action = "/admin/{{ probe_name }}/update.html" role = "form" method = "POST">
-
+        {{ form.csrf_token }}
+        
         <input type = "hidden" name = "probe_name" value = "{{ probe_name }}">
 
         <div class="row">
