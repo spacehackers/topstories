@@ -49,7 +49,7 @@ def admin(probe_name):
     topstories_archive = loads(r_server.get('topstories_archive'))
     form = SpaceProbeForm(csrf_enabled=False)
 
-    if form.validate_on_submit():
+    if form.validate():
         # archive the old
         if form.probe_name.data in topstories:
             topstories_archive[form.probe_name.data] = topstories[form.probe_name.data]
@@ -59,8 +59,10 @@ def admin(probe_name):
         r_server.set('topstories', dumps(topstories))
         r_server.set('topstories_archive', dumps(topstories))
 
+        # redirct to main page
         return redirect(url_for('admin_main', _anchor=form.probe_name.data))
-    return 'fail'
+    
+    return render_template('admin_probe.html', form=form, probe_name=probe_name, post=topstories[probe_name])
 
 
 @app.route('/admin/<probe_name>/')

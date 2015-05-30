@@ -2,6 +2,14 @@
 {% block body %}
 
 <div class = "containter" style = "border-top:1px solid gray; padding:20px">
+
+    {% if form.errors %}
+        <div style = "color:red; border: 1px solid red; padding: 10px; margin:0">
+            <p>Please correct errors below<br></p>
+
+        </div>
+    {% endif %}
+
     <h2>
         {{ probe_name }}
     </h2>
@@ -13,24 +21,42 @@
         <input type = "hidden" name = "probe_name" value = "{{ probe_name }}">
 
         <div class="row">
-            <div class="form-group">
-                <label for="exampleInputEmail1">Title</label>
+            <div class="form-group
+                {% if form.errors.title %}
+                    has-error 
+                {% endif %}
+            ">
+                <label for="exampleInputEmail1">Title</label><br>
+                <span style = "color:red">{{ form.errors.title|join("<br>") }}</span>
                 <input name = "title" type = "text" value = "{{ post.title|safe}}" class="form-control">
             </div>
         </div>
 
         <div class="row">
-            <div class="form-group">
-                <label for="exampleInputEmail1">ISO date</label>
+            <div class="form-group
+                {% if form.errors.date %}
+                    has-error 
+                {% endif %}
+            ">  
+
+                <label for="date">ISO date (YYYY-MM-DD)</label><br>
+                <span style = "color:red">{{ form.errors.date|join("<br>") }}</span>
                 <input name = "date" type = "text" value = "{{ post.published}}" class="form-control">
+
             </div>
         </div>
 
 
         <div class="row">
-            <div class="form-group">
-                <label for="exampleInputEmail1">URL</label>
+            <div class="form-group
+                {% if form.errors.url %}
+                    has-error 
+                {% endif %}
+            ">
+                <label for="url">URL</label><br>
+                <span style = "color:red">{{ form.errors.url|join("<br>") }}</span>
                 <input name = "url" type = "text" value = "{{ post.link}}" class="form-control">
+
             </div>
         </div>
 
