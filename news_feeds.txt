@@ -47,3 +47,4 @@ http://feeds.washingtonpost.com/rss/national/health-science #Washington Post Hea
 http://feeds.washingtonpost.com/rss/rss_speaking-of-science	#Washington Post Speaking of Science
 http://feeds.wired.com/wiredscience	#Wired Science
 http://news.yahoo.com/rss/science	#Yahoo Science
+https://gbtimes.com/  #GBTIMES China
